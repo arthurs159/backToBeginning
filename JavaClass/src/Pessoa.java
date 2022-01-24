@@ -5,15 +5,14 @@ public class Pessoa {
 
 	private String sobrenome;
 
-	private int idade;
+	private int idade = 19;
 
 	public Pessoa() {
 	}
 
-	public Pessoa(String name, String sobrenome, int idade) {
+	public Pessoa(String name, String sobrenome) {
 		this.name = name;
 		this.sobrenome = sobrenome;
-		this.idade = idade;
 	}
 
 	public String getName() {
