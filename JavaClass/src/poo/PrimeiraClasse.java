@@ -1,24 +1,45 @@
 package poo;
 
+import javax.swing.JOptionPane;
+
 public class PrimeiraClasse {
 
 	public static void main(String[] args) {
 
 		/*aluno1 é uma referencia para o objeto aluno*/
-		Aluno aluno1 = new Aluno(); /*Aqui será Joao*/
-		aluno1.setNome("João");
-		aluno1.setIdade(50);
-		aluno1.setDataNascimento("18/10/1987");
-		aluno1.setRegistroGeral("454.4545.4554");
-		aluno1.setNumeroCpf("1569.45454.32326");
-		aluno1.setNomeMae("Shirley");
-		aluno1.setNomePai("Antonio");
-		aluno1.setDataMatricula("10/10/2020");
 		
-		aluno1.setNota1(90);
-		aluno1.setNota2(80.8);
-		aluno1.setNota3(70.9);
-		aluno1.setNota4(90.7);
+		String nome = JOptionPane.showInputDialog("Qual o nome do aluno ?");
+		String idade = JOptionPane.showInputDialog("Qual a idade?");
+		String dataNascimento = JOptionPane.showInputDialog("Data de nascimento?");
+		String rg = JOptionPane.showInputDialog("Registro Geral?");
+		String cpf = JOptionPane.showInputDialog("Qual é CPF?");
+		String mae = JOptionPane.showInputDialog("Nome da mãe");
+		String pai = JOptionPane.showInputDialog("Nome do pai");
+		String matricula = JOptionPane.showInputDialog("Data da matricula");
+		String serie = JOptionPane.showInputDialog("Qual a serie?");
+		String escola = JOptionPane.showInputDialog("Nome da escola");
+		String nota1 = JOptionPane.showInputDialog("Qual a nota 1?");
+		String nota2 = JOptionPane.showInputDialog("Qual a nota 2?");
+		String nota3 = JOptionPane.showInputDialog("Qual a nota 3?");
+		String nota4 = JOptionPane.showInputDialog("Qual a nota 4?");
+		
+		Aluno aluno1 = new Aluno();
+		aluno1.setNome(nome);
+		aluno1.setIdade(Integer.parseInt(idade));
+		
+		aluno1.setDataNascimento(dataNascimento);
+		aluno1.setRegistroGeral(rg);
+		aluno1.setNumeroCpf(cpf);
+		aluno1.setNomeMae(mae);
+		aluno1.setNomePai(pai);
+		aluno1.setDataMatricula(matricula);
+		aluno1.setSerieMatriculado(serie);
+		aluno1.setNomeEscola(escola);
+		
+		aluno1.setNota1(Double.parseDouble(nota1));
+		aluno1.setNota2(Double.parseDouble(nota2));
+		aluno1.setNota3(Double.parseDouble(nota3));
+		aluno1.setNota4(Double.parseDouble(nota4));
 		
 		System.out.println("Nome é = " + aluno1.getNome());
 		System.out.println("Idade é = " + aluno1.getIdade());
@@ -27,12 +48,6 @@ public class PrimeiraClasse {
 		System.out.println("Resultado = " + (aluno1.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
 		System.out.println("Resultado 2 = " + aluno1.getAlunoAprovado2());
 		
-		Aluno aluno2 = new Aluno(); /*Aqui será Pedro*/
-		
-		Aluno aluno3 = new Aluno(); /*Aqui será Alex*/
-		
-		Aluno aluno4 = new Aluno("Maria");
-		
-		Aluno aluno5 = new Aluno("José", 50);
+
 	}
 }
