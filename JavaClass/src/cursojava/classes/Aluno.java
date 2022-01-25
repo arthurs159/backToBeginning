@@ -1,4 +1,4 @@
-package poo;
+package cursojava.classes;
 
 public class Aluno {
 
@@ -13,42 +13,7 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatriculado;
 
-	private double nota1;
-	private double nota2;
-	private double nota3;
-	private double nota4;
-
-	public double getNota1() {
-		return nota1;
-	}
-
-	public void setNota1(double nota1) {
-		this.nota1 = nota1;
-	}
-
-	public double getNota2() {
-		return nota2;
-	}
-
-	public void setNota2(double nota2) {
-		this.nota2 = nota2;
-	}
-
-	public double getNota3() {
-		return nota3;
-	}
-
-	public void setNota3(double nota3) {
-		this.nota3 = nota3;
-	}
-
-	public double getNota4() {
-		return nota4;
-	}
-
-	public void setNota4(double nota4) {
-		this.nota4 = nota4;
-	}
+	private Disciplina disciplina = new Disciplina();
 
 	public Aluno() { /* Cria os dados na memoria - sendo padrão do Java */
 
@@ -62,10 +27,6 @@ public class Aluno {
 		nome = nomePadrao;
 		idade = idadePadrao;
 	}
-
-	/* Getter e Setters */
-
-	/* Recebe dados */
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -147,10 +108,16 @@ public class Aluno {
 		this.serieMatriculado = serieMatriculado;
 	}
 
-	/* Método que retorna a média do aluno */
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
 
 	public double getMediaNota() {
-		return (nota1 + nota2 + nota3 + nota4) / 4;
+		return (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
 	}
 
 	public boolean getAlunoAprovado() {
@@ -169,6 +136,45 @@ public class Aluno {
 		} else {
 			return "Aluno está reprovado";
 		}
-
 	}
+
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((numeroCpf == null) ? 0 : numeroCpf.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numeroCpf == null) {
+			if (other.numeroCpf != null)
+				return false;
+		} else if (!numeroCpf.equals(other.numeroCpf))
+			return false;
+		return true;
+	}
+
 }
