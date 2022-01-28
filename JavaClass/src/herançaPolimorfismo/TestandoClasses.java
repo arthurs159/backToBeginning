@@ -11,11 +11,13 @@ public class TestandoClasses {
 		Diretor diretor = new Diretor();
 		diretor.setRegistroGeral("45s45s45s1s23");
 		diretor.setIdade(50);
+		diretor.setNome("Carlos");
 		
 		Secretario secretario = new Secretario();
 		secretario.setExperiencia("Administração");
 		secretario.setNumeroCpf("123321321");
 		secretario.setIdade(18);
+		secretario.setNome("Joao");
 		
 		System.out.println(aluno);
 		System.out.println(diretor);
@@ -26,5 +28,13 @@ public class TestandoClasses {
 		System.out.println(secretario.pessoaMaiorIdade());
 		
 		System.out.println("Salario = " + aluno.salario());
+		
+		teste(aluno);
+		teste(diretor);
+		teste(secretario);
+	}
+	
+	public static void teste(Pessoa pessoa) {
+		System.out.println("Essa pessoa é demais = " + pessoa.getNome() + ", Salário = " + pessoa.salario());
 	}
 }

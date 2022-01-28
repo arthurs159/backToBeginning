@@ -77,6 +77,40 @@ public class Aluno extends Pessoa {
 	public double salario() {
 		return 1500;
 	}
+	
+	public double getMediaNota() {
+
+		double somaNotas = 0.0;
+
+		for (Disciplina disciplina : disciplinas) {
+			somaNotas += disciplina.getNota();
+		}
+
+		return somaNotas / disciplinas.size();
+	}
+	
+	public boolean getAlunoAprovado() {
+		double media = this.getMediaNota();
+		if (media >= 70) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public String getAlunoAprovado2() {
+		double media = this.getMediaNota();
+		if (media >= 50) {
+			if (media >= 70) {
+				return StatusAluno.APROVADO;
+			} else {
+				return StatusAluno.RECUPERACAO;
+			}
+		} else {
+			return StatusAluno.REPROVADO;
+		}
+	}
+
 
 	
 }
