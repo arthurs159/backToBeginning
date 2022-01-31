@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-
+import classesAuxiliares.FuncaoAutenticacao;
 
 public class PrimeiraClasse {
 
@@ -15,11 +15,8 @@ public class PrimeiraClasse {
 		String login = JOptionPane.showInputDialog("Informe Login");
 		String senha = JOptionPane.showInputDialog("Informe a Senha");
 
-		Secretario secretario = new Secretario();
-		secretario.setLogin(login);
-		secretario.setSenha(senha);
-		
-		if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+
+		if (new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
 
@@ -93,7 +90,7 @@ public class PrimeiraClasse {
 						"Resultado = " + aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
 			}
 
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "Acesso negado");
 		}
 	}

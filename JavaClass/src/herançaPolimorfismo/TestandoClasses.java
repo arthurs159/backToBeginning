@@ -8,7 +8,7 @@ public class TestandoClasses {
 		aluno.setNome("Alex JDev - Treinamentos");
 		aluno.setIdade(16);
 		
-		Diretor diretor = new Diretor();
+		Diretor diretor = new Diretor(null, null);
 		diretor.setRegistroGeral("45s45s45s1s23");
 		diretor.setIdade(50);
 		diretor.setNome("Carlos");

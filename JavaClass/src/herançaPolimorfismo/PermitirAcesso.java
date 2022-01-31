@@ -2,5 +2,6 @@ package herançaPolimorfismo;
 
 public interface PermitirAcesso {
 
-	public boolean autenticar(); /*Apenas declaração do método*/
+	public boolean autenticar();
+	public boolean autenticar(String login, String senha);
 }
