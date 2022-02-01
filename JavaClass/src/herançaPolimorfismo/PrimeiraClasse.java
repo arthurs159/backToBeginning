@@ -1,18 +1,27 @@
 package herançaPolimorfismo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
 import classesAuxiliares.FuncaoAutenticacao;
+import excecao.ExcecaoProcessarNota;
 
 public class PrimeiraClasse {
 
 	public static void main(String[] args) {
 
 		try {
+
+//			File fill = new File("lines.txt");
+//			Scanner scanner = new Scanner(fill);
+
+//			lerArquivo();
 
 			String login = JOptionPane.showInputDialog("Informe Login");
 			String senha = JOptionPane.showInputDialog("Informe a Senha");
@@ -55,8 +64,7 @@ public class PrimeiraClasse {
 //						continuarRemover = JOptionPane.showConfirmDialog(null, "Continuar remover ?");
 //					}
 //				}
-//				alunos.add(aluno1);
-//			}
+					alunos.add(aluno1);
 
 					maps.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
 					maps.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
@@ -72,34 +80,58 @@ public class PrimeiraClasse {
 							maps.get(StatusAluno.REPROVADO).add(aluno);
 						}
 					}
-
-					System.out.println(" -------------- Lista dos Aprovados ----------------- ");
-					for (Aluno aluno : maps.get(StatusAluno.APROVADO)) {
-						System.out.println(
-								"Resultado = " + aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
-					}
-
-					System.out.println(" -------------- Lista dos Reprovados ----------------- ");
-					for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
-						System.out.println(
-								"Resultado = " + aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
-					}
-
-					System.out.println(" -------------- Lista dos Recuperação ----------------- ");
-					for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
-						System.out.println(
-								"Resultado = " + aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
-					}
-
 				}
-//			else {
-//			JOptionPane.showMessageDialog(null, "Acesso negado");
+
+				System.out.println(" -------------- Lista dos Aprovados ----------------- ");
+				for (Aluno aluno : maps.get(StatusAluno.APROVADO)) {
+					System.out.println("Resultado = Aluno de nome: " + aluno.getNome() + " Foi "
+							+ aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
+				}
+
+				System.out.println(" -------------- Lista dos Reprovados ----------------- ");
+				for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
+					System.out.println("Resultado = Aluno de nome: " + aluno.getNome() + " Foi "
+							+ aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
+				}
+
+				System.out.println(" -------------- Lista dos Recuperação ----------------- ");
+				for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
+					System.out.println("Resultado = Aluno de nome: " + aluno.getNome() + " Foi "
+							+ aluno.getAlunoAprovado2() + " com média de = " + aluno.getMediaNota());
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Acesso negado");
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace(); /* Imprime erro */
-			JOptionPane.showMessageDialog(null, "Erro ao processar notas");
+		} catch (NumberFormatException e) {
+
+			StringBuilder saida = new StringBuilder();
+
+			System.out.println("Mensagem : " + e.getMessage());
+
+			for (int i = 0; i < e.getStackTrace().length; i++) {
+				saida.append(" \n Classe de erro : " + e.getStackTrace()[i].getClassName());
+				saida.append(" \n Classe de erro : " + e.getStackTrace()[i].getMethodName());
+				saida.append(" \n Classe de erro : " + e.getStackTrace()[i].getLineNumber());
+			}
+
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas" + saida.toString());
+		} catch (NullPointerException e) {
+			JOptionPane.showMessageDialog(null, "Um nullpointer exception : " + e.getClass());
+		} finally {
+			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo");
+		}
+	}
+
+	public static void lerArquivo() throws ExcecaoProcessarNota {
+
+		try {
+			File fill = new File("lines.txt");
+			Scanner scanner = new Scanner(fill);
+		} catch (FileNotFoundException e) {
+			throw new ExcecaoProcessarNota(e.getMessage());
 		}
 
 	}
+
 }
